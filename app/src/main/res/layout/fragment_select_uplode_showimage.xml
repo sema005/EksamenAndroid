@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:text="frag3"
+            android:text="frag 3"
             android:textColor="@color/black"
             android:textSize="54sp"
 

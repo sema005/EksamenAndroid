@@ -14,12 +14,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:tabBackground="@color/design_default_color_primary_variant"
-            app:tabGravity="fill"
-            app:tabInlineLabel="true"
-            app:tabMode="fixed"
-            app:tabTextAppearance="@style/Theme.MaterialComponents.DayNight.Dialog.Alert.Bridge"
-            app:tabTextColor="@color/white" />
+      />
 
 
     <androidx.viewpager.widget.ViewPager
