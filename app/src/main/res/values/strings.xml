@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Photo Bomb</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Frag 2</string>
+    <string name="hello_blank_fragment">Save Results</string>
 </resources>

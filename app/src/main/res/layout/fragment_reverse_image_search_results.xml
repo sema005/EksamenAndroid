@@ -8,16 +8,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#7A2323"
             android:layout_centerInParent="true"
-            android:text="Fragment 1"
+            android:textAlignment="center"
+            android:text="Reverse Image Search Results"
             android:textColor="@color/black"
-            android:textSize="54sp"
-
-            />
+            android:textSize="54sp" />
     </RelativeLayout>
 </FrameLayout>

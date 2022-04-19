@@ -8,12 +8,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
+            android:background="#0034EE"
+            android:textAlignment="center"
             android:text="@string/hello_blank_fragment"
             android:textColor="@color/black"
             android:textSize="54sp"
