@@ -3,27 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FirstFragment">
+    tools:context=".StartScreen">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <!--<com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upload Image" />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save results" />
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search image" />
-    </com.google.android.material.tabs.TabLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,6 +19,7 @@
             >
 
             <Button
+                android:id="@+id/uploadImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -45,6 +28,7 @@
                 android:text="Upload image" />
 
             <Button
+                android:id="@+id/similarImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -53,10 +37,10 @@
                 android:text="Similiar image" />
 
             <Button
+                android:id="@+id/savedImages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="switchFragment"
                 android:tag="1"
                 android:text="Saved images" />
 
@@ -70,35 +54,36 @@
             >
 
             <Button
+                android:id="@+id/selectImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="switchFragment"
                 android:tag="1"
                 android:text="Select image" />
 
             <Button
+                android:id="@+id/uploadSelectedArea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="switchFragment"
                 android:tag="1"
-                android:text="Upload image" />
+                android:text="Upload selected area" />
 
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/fragment_first"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Add or Edit Student Info" />
-        </FrameLayout>
+    <FrameLayout
+        android:id="@+id/fragment_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Add or Edit Student Info" />
+    </FrameLayout>
 
 
 
