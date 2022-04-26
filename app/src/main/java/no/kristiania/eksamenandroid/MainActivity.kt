@@ -3,88 +3,61 @@ package no.kristiania.eksamenandroid
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var fragmentManager: FragmentManager
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_first)
+        setContentView(R.layout.fragment_forside)
 
-        Log.i(Globals.TAG, "Activity 1 onCreate")
-        Toast.makeText(this, "Activity onCreate", Toast.LENGTH_SHORT).show()
-    }
 
-    override fun onStart() {
-        super.onStart()
-        Log.i(Globals.TAG, "Activity 1 onStart")
-        Toast.makeText(this, "Activity onStart", Toast.LENGTH_SHORT).show()
-    }
+        val button1: Button = findViewById(R.id.button)
+        button1.setOnClickListener{
+            val leggTilBilde = LeggTilBilde()
+            val manager = supportFragmentManager
+            val transaction = manager.beginTransaction()
 
-    override fun onResume() {
-        super.onResume()
-        Log.i(Globals.TAG, "Activity 1 onResume")
-        Toast.makeText(this, "Activity onResume", Toast.LENGTH_SHORT).show()
-    }
+            transaction.replace(R.id.fragmentContainerView, leggTilBilde)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
-    override fun onPause() {
-        super.onPause()
-        Log.i(Globals.TAG, "Activity 1 onPause")
-        Toast.makeText(this, "Activity onPause", Toast.LENGTH_SHORT).show()
-    }
+        val button2: Button = findViewById(R.id.button2)
+        button2.setOnClickListener{
+            val resultat = Resultat()
+            val manager = supportFragmentManager
+            val transaction = manager.beginTransaction()
 
-    override fun onStop() {
-        super.onStop()
-        Log.i(Globals.TAG, "Activity 1 onStop")
-        Toast.makeText(this, "Activity onStop", Toast.LENGTH_SHORT).show()
-    }
+            transaction.replace(R.id.fragmentContainerView, resultat)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.i(Globals.TAG, "Activity 1 onRestart")
-        Toast.makeText(this, "Activity onRestart", Toast.LENGTH_SHORT).show()
-    }
+        val button3: Button = findViewById(R.id.button3)
+        button3.setOnClickListener{
+            val lagretBilder = LagretBilder()
+            val manager = supportFragmentManager
+            val transaction = manager.beginTransaction()
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i(Globals.TAG, "Activity 1 onDestroy")
-        Toast.makeText(this, "Activity onDestroy", Toast.LENGTH_SHORT).show()
-    }
-
-    fun switchFragment(v: View) {
-        fragmentManager = supportFragmentManager
-
-        if(Integer.parseInt(v.getTag().toString()) == 1) {
-            fragmentManager
-                .beginTransaction()
-                .replace(
-                    R.id.fragment_main,
-                    SavedImages(),
-                    "fragment_saved_images"
-                )
-                .commit()
-        }else{
-            fragmentManager
-                .beginTransaction()
-                .replace(
-                    R.id.fragment_main,
-                    StartScreen(),
-                    "fragment_start_screen"
-                )
-                .commit()
+            transaction.replace(R.id.fragmentContainerView, lagretBilder)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
 
 
 
-
     }
+
+
+
 
 
     }
