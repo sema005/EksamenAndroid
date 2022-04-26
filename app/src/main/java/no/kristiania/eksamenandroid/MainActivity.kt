@@ -52,6 +52,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        /*val button4: Button = findViewById(R.id.button4)
+        val image = getFileStreamPath("mario_clip_art_5.png")
+        button4.setOnClickListener{
+            UploadUtility(this).uploadFile(image)
+        }*/
+
 
 
     }
