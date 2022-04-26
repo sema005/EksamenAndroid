@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import no.kristiania.eksamenandroid.R
 
 
-class firstFragment : Fragment() {
+class FirstFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
