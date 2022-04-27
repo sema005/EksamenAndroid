@@ -1,8 +1,11 @@
 package no.kristiania.eksamenandroid
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
 import org.json.JSONObject
@@ -11,7 +14,7 @@ import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-
+    private var IMGInfo = ArrayList<StudentInfo>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,5 +87,82 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    override fun onStart() {
+        super.onStart()
+        Log.i(Globals.TAG, "Activity 1 onStart")
+        Toast.makeText(this, "Activity onStart", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i(Globals.TAG, "Activity 1 onResume")
+        Toast.makeText(this, "Activity onResume", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i(Globals.TAG, "Activity 1 onPause")
+        Toast.makeText(this, "Activity onPause", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i(Globals.TAG, "Activity 1 onStop")
+        Toast.makeText(this, "Activity onStop", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i(Globals.TAG, "Activity 1 onRestart")
+        Toast.makeText(this, "Activity onRestart", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i(Globals.TAG, "Activity 1 onDestroy")
+        Toast.makeText(this, "Activity onDestroy", Toast.LENGTH_SHORT).show()
+    }
+
+
+    fun submit(view: View) {
+        var nameViewText =
+            (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).nameView.text.toString()
+        var imageUri =
+            (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageUri.toString()
+
+        var rect = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).actualCropRect!!
+        var imgW = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.width
+        var imgH = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).image.height
+
+        val newPicture: IMGInfo = IMGInfo(
+            nameViewText,
+            imageUri,
+            rect.left.toInt(),
+            rect.top.toInt(),
+            rect.right.toInt(),
+            rect.bottom.toInt(),
+            imgW.toInt(),
+            imgH.toInt()
+        )
+
+        IMGInfo.add(newPicture)
+
+        dbHelper?.writableDatabase?.insert("students", null, ContentValues().apply {
+            put("name", newStudent.name)
+            put(
+                "image",
+                bitmapTobyteArray(
+                    getBitmap(
+                        applicationContext,
+                        null,
+                        newPicture.imageUri,
+                        ::UriToBitmap
+                    )
+                ).toByteArray()
+            )
+        })
+
+        Toast.makeText(this, "Added New Student", Toast.LENGTH_SHORT).show()
+    }
 }
 
