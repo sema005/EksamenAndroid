@@ -10,9 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import okhttp3.*
+import java.io.IOException
 
 
 class LeggTilBilde : Fragment() {
@@ -51,11 +53,48 @@ class LeggTilBilde : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.i(Globals.TAG, "Fragment 1 onCreateView")
-        Toast.makeText(activity, "Fragment 1 onCreateView", Toast.LENGTH_SHORT).show()
+        Log.i(Globals.TAG, "Legg til bilde onCreateView")
+        Toast.makeText(activity, "Legg til bilde onCreateView", Toast.LENGTH_SHORT).show()
 
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_legg_til_bilde, container, false)
+
+
+        fun getDataFromSearchMotor() {
+            class MainActivity : AppCompatActivity() {
+
+                private val client = OkHttpClient()
+
+                override fun onCreate(savedInstanceState: Bundle?) {
+                    super.onCreate(savedInstanceState)
+                    setContentView(R.layout.fragment_legg_til_bilde)
+
+                    run(url = "http://api-edu.gtl.ai/api/v1/imagesearch/google?url=https://www.mariokart.png%22")
+                }
+
+                fun run(url: String) {
+                    val request = Request.Builder()
+                        .url(url)
+                        .build()
+
+                    client.newCall(request).enqueue(object : Callback {
+                        override fun onFailure(call: Call, e: IOException) {}
+                        override fun onResponse(call: Call, response: Response) =
+                            println(response.body?.string())
+                    })
+                }
+            }
+        }
+
+
+
+        val uploadImageButton = view.findViewById<Button>(R.id.uploadImageButton)
+        uploadImageButton.setOnClickListener{
+            Log.e("Success", "${getDataFromSearchMotor()}")
+
+
+        }
+
 
 
         image = view.findViewById<CropImageView2>(R.id.image)
