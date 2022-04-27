@@ -18,6 +18,8 @@ import java.io.IOException
 
 class LeggTilBilde : Fragment() {
 
+
+
     public lateinit var image: CropImageView2
 
     public var imageUri: String? = null
@@ -39,15 +41,6 @@ class LeggTilBilde : Fragment() {
 
     }
 
-    /*
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_legg_til_bilde, container, false)
-    }*/
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,7 +49,7 @@ class LeggTilBilde : Fragment() {
         Toast.makeText(activity, "Legg til bilde onCreateView", Toast.LENGTH_SHORT).show()
 
         // Inflate the layout for this fragment
-        var view = inflater.inflate(R.layout.fragment_legg_til_bilde, container, false)
+        val view = inflater.inflate(R.layout.fragment_legg_til_bilde, container, false)
 
 
         val client = OkHttpClient()
@@ -89,7 +82,6 @@ class LeggTilBilde : Fragment() {
         val uploadImageButton = view.findViewById<Button>(R.id.uploadImageButton)
         uploadImageButton.setOnClickListener{
             run()
-
         }
 
 
