@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 
 
 
-class Resultat : Fragment() {
+class Resultat(val imagesIncoming: ArrayList<ImagesIncoming>) : Fragment() {
 
 
     override fun onCreateView(

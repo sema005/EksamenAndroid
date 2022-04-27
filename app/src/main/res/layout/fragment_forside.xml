@@ -18,27 +18,48 @@
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:orientation="horizontal">
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"
+            android:layout_weight="2"/>
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Legg til bilde" />
+            android:text="Legg til bilde"
+            android:textSize="12sp" />
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"
+            android:layout_weight="2"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Resultat" />
+            android:text="Resultat"
+            android:textSize="12sp" />
+        />
+
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"
+            android:layout_weight="2"/>
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lagret bilder" />
+            android:text="Lagret bilder"
+            android:textSize="12sp" />
+        <Space
+            android:layout_width="5dp"
+            android:layout_height="1dp"
+            android:layout_weight="2"/>
     </LinearLayout>
 
 </FrameLayout>

@@ -14,14 +14,14 @@ object Globals {
     val TAG = "AndroidLifeCycle"
 }
 
-data class StudentInfo(var name: String, var surname: String, var imageUri: String?, var x: Int, var y: Int, var w: Int, var h: Int, var imageH: Int, var imageW: Int, var position: Int=-1): Serializable {
+data class ImagesIncoming(var name: String, var surname: String, var imageUri: String?, var x: Int, var y: Int, var w: Int, var h: Int, var imageH: Int, var imageW: Int, var position: Int=-1): Serializable {
 }
 
 object StudentInfoTester{
 
-    fun createRandomStudents(amount: Int): ArrayList<StudentInfo>{
+    fun createRandomStudents(amount: Int): ArrayList<ImagesIncoming>{
 
-        val generatedList: ArrayList<StudentInfo> = ArrayList<StudentInfo>()
+        val generatedList: ArrayList<ImagesIncoming> = ArrayList<ImagesIncoming>()
 
         repeat(amount){
             var randomName: String = Random.generateRandomString(5..10)
@@ -30,7 +30,7 @@ object StudentInfoTester{
             randomSurname = ""+randomSurname[0].toUpperCase() + randomSurname.subSequence(1,randomSurname.length)
 
             generatedList.add(
-                StudentInfo(
+                ImagesIncoming(
                     randomName,
                     randomSurname,
                     null,

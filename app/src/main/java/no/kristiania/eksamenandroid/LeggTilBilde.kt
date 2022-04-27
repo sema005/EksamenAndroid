@@ -5,14 +5,13 @@ import android.graphics.Rect
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import okhttp3.*
 import java.io.IOException
 
@@ -60,38 +59,36 @@ class LeggTilBilde : Fragment() {
         var view = inflater.inflate(R.layout.fragment_legg_til_bilde, container, false)
 
 
-        fun getDataFromSearchMotor() {
-            class MainActivity : AppCompatActivity() {
+        val client = OkHttpClient()
+        fun run() {
+            val request = Request.Builder()
+                .url("http://api-edu.gtl.ai/api/v1/imagesearch/google?url=https://www.Mariokart.png")
+                .build()
 
-                private val client = OkHttpClient()
-
-                override fun onCreate(savedInstanceState: Bundle?) {
-                    super.onCreate(savedInstanceState)
-                    setContentView(R.layout.fragment_legg_til_bilde)
-
-                    run(url = "http://api-edu.gtl.ai/api/v1/imagesearch/google?url=https://www.mariokart.png%22")
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                    e.printStackTrace()
+                    Log.e("FUCK", "HALLA")
                 }
 
-                fun run(url: String) {
-                    val request = Request.Builder()
-                        .url(url)
-                        .build()
+                override fun onResponse(call: Call, response: Response) {
+                    response.use {
+                        if (!response.isSuccessful) throw IOException("Unexpected code $response")
 
-                    client.newCall(request).enqueue(object : Callback {
-                        override fun onFailure(call: Call, e: IOException) {}
-                        override fun onResponse(call: Call, response: Response) =
-                            println(response.body?.string())
-                    })
+                        for ((name, value) in response.headers) {
+                            println("$name: $value")
+                        }
+
+                        Log.i("YES",response.body!!.string())
+                    }
                 }
-            }
+            })
         }
-
 
 
         val uploadImageButton = view.findViewById<Button>(R.id.uploadImageButton)
         uploadImageButton.setOnClickListener{
-            Log.e("Success", "${getDataFromSearchMotor()}")
-
+            run()
 
         }
 
