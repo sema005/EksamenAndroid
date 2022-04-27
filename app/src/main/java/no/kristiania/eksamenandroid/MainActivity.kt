@@ -7,15 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-
+    private var imagesIncoming = ArrayList<ImagesIncoming>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_forside)
-
+        setContentView(R.layout.fragment_resultat)
 
         val button1: Button = findViewById(R.id.button)
-        button1.setOnClickListener{
+        button1.setOnClickListener {
             val leggTilBilde = LeggTilBilde()
             val manager = supportFragmentManager
             val transaction = manager.beginTransaction()
@@ -25,8 +24,11 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
         }
 
-        val button2: Button = findViewById(R.id.button2)
-        button2.setOnClickListener{
+
+    imagesIncoming = StudentInfoTester.createRandomStudents(10)
+
+        /*val button2: Button = findViewById(R.id.button2)
+        button2.setOnClickListener {
             val resultat = Resultat()
             val manager = supportFragmentManager
             val transaction = manager.beginTransaction()
@@ -34,11 +36,10 @@ class MainActivity : AppCompatActivity() {
             transaction.replace(R.id.fragmentContainerView, resultat)
             transaction.addToBackStack(null)
             transaction.commit()
-
-        }
+        }*/
 
         val button3: Button = findViewById(R.id.button3)
-        button3.setOnClickListener{
+        button3.setOnClickListener {
             val lagretBilder = LagretBilder()
             val manager = supportFragmentManager
             val transaction = manager.beginTransaction()
@@ -49,12 +50,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
-
     }
-
-
 }
+
