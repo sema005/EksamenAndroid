@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import okhttp3.*
 import org.json.JSONObject
+import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_forside)
 
+        fetchJson()
 
         val button1: Button = findViewById(R.id.button)
         button1.setOnClickListener{
@@ -55,8 +58,31 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    }
+    fun fetchJson() {
+        println("HEUEHEUEHUEHEU")
+
+        val url ="http://api-edu.gtl.ai/api/v1/imagesearch/google?url=https://www.mario.png"
+
+        val reguest = Request.Builder().url(url).build()
+
+        println( url.toString())
+        val client = OkHttpClient()
+        client.newCall(reguest).enqueue(object : Callback{
+
+            override fun onResponse(call: Call, response: Response) {
+                val body = response.body?.string()
+                println(body)
+            }
+            override fun onFailure(call: Call, e: IOException) {
+                println("Dette gikk ikke")
+            }
+
+
+        })
 
     }
 
 
 }
+
